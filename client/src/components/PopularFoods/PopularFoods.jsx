@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import axios from "axios";
 
-import FoodCard from "../FoodCard/FoodCard";
+import FoodCard from "../FoodCard/foodCard";
 
 function PopularFoods({
 search,

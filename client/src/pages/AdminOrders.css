@@ -1,0 +1,53 @@
+.admin-orders{
+
+padding:120px 8%;
+
+min-height:100vh;
+
+background:#0d2f1c;
+
+color:white;
+
+}
+
+.order-card{
+
+background:white;
+
+color:black;
+
+padding:20px;
+
+border-radius:12px;
+
+margin-bottom:20px;
+
+}
+
+.order-card select{
+
+margin-top:10px;
+
+padding:10px;
+
+font-size:16px;
+
+border-radius:8px;
+
+}
+
+.loader{
+width:50px;
+height:50px;
+border:5px solid #ddd;
+border-top:5px solid orange;
+border-radius:50%;
+animation:spin .8s linear infinite;
+margin:100px auto;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}

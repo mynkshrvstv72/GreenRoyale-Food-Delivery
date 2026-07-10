@@ -94,7 +94,7 @@ function Hero() {
         transition={{ duration: 1 }}
       >
         <motion.img
-          src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900"
+          src="https://images.unsplash.com/photo-1588644525273-f37b60d78512?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dmVnZXRhcmlhbiUyMG1lYWx8ZW58MHx8MHx8fDA%3D"
           alt="Food"
 
           animate={{

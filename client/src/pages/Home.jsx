@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
@@ -9,6 +10,9 @@ function Home() {
 
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
+
+  const [foods, setFoods] = useState([]);
+
 
   return (
     <>

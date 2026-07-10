@@ -1,167 +1,156 @@
+import "./Cart.css";
+
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
-function Cart(){
+function Cart() {
 
-const{
+  const navigate = useNavigate();
 
-cart,
+  const {
 
-increaseQuantity,
+    cart,
 
-decreaseQuantity,
+    increaseQuantity,
 
-removeFromCart
+    decreaseQuantity,
 
-}=useContext(CartContext);
+    removeFromCart
 
-const total=cart.reduce(
+  } = useContext(CartContext);
 
-(sum,item)=>sum+item.price*item.quantity,
+  const total = cart.reduce(
 
-0
+    (sum, item) => sum + item.price * item.quantity,
 
-);
+    0
 
-return(
+  );
 
-<div style={{padding:"120px 8%"}}>
+  if (cart.length === 0) {
 
-<h1>Shopping Cart</h1>
+    return (
 
-{
+      <div className="cart-page">
 
-cart.length===0
+        <div className="empty-cart">
 
-?
+          <h1>🛒 Your Cart is Empty</h1>
 
-<h2>Your Cart is Empty</h2>
+          <button
+            className="checkout-btn"
+            onClick={() => navigate("/menu")}
+          >
+            Explore Menu
+          </button>
 
-:
+        </div>
 
-<>
+      </div>
 
-{
+    );
 
-cart.map(item=>(
+  }
 
-<div
+  return (
 
-key={item._id}
+    <div className="page cart-page">
 
-style={{
+      <h1>Shopping Cart</h1>
 
-display:"flex",
+      <div className="cart-container">
 
-justifyContent:"space-between",
+        {
 
-alignItems:"center",
+          cart.map((item) => (
 
-margin:"25px 0",
+            <div
+              className="cart-item"
+              key={item._id}
+            >
 
-padding:"20px",
+              <div className="cart-left">
 
-background:"#fff",
+                <img
+                  src={item.image}
+                  alt={item.name}
+                />
 
-borderRadius:"12px",
+                <div className="cart-info">
 
-color:"#000"
+                  <h3>{item.name}</h3>
 
-}}
+                  <p>{item.category}</p>
 
->
+                  <span>
 
-<img
+                    ₹{item.price}
 
-src={item.image}
+                  </span>
 
-width="100"
+                </div>
 
-/>
+              </div>
 
-<div>
+              <div className="cart-actions">
 
-<h3>{item.name}</h3>
+    <div className="cart-quantity">
 
-<p>₹{item.price}</p>
+        <button onClick={() => decreaseQuantity(item._id)}>-</button>
 
-</div>
+        <span>{item.quantity}</span>
 
-<div>
+        <button onClick={() => increaseQuantity(item._id)}>+</button>
 
-<button
+    </div>
 
-onClick={()=>decreaseQuantity(item._id)}
+    <div className="cart-price">
+        ₹{item.price * item.quantity}
+    </div>
 
->
-
--
-
-</button>
-
-<span
-
-style={{margin:"15px"}}
-
->
-
-{item.quantity}
-
-</span>
-
-<button
-
-onClick={()=>increaseQuantity(item._id)}
-
->
-
-+
-
-</button>
+    <button
+        className="remove-btn"
+        onClick={() => removeFromCart(item._id)}
+    >
+        🗑 Remove
+    </button>
 
 </div>
 
-<h3>
+            </div>
 
-₹{item.price*item.quantity}
+          ))
 
-</h3>
+        }
 
-<button
+      </div>
 
-onClick={()=>removeFromCart(item._id)}
+      <div className="cart-total">
 
->
+        <h2>
 
-❌
+          Grand Total : ₹{total}
 
-</button>
+        </h2>
 
-</div>
+        <button
 
-))
+          className="checkout-btn"
 
-}
+          onClick={() => navigate("/checkout")}
 
-<h2>
+        >
 
-Grand Total : ₹{total}
+          Proceed To Checkout
 
-</h2>
+        </button>
 
-<button>
+      </div>
 
-Proceed To Checkout
+    </div>
 
-</button>
-
-</>
-
-}
-
-</div>
-
-)
+  );
 
 }
 

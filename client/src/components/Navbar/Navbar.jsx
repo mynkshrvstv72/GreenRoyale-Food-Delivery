@@ -1,77 +1,162 @@
 import "./Navbar.css";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { FaShoppingCart } from "react-icons/fa";
 
 import { motion } from "framer-motion";
 
 import { useContext } from "react";
+
 import { CartContext } from "../../context/CartContext";
 
-function Navbar(){
+import { useAuth } from "../../context/AuthContext";
 
-    const { cart } = useContext(CartContext);
+import { logout } from "../../services/authService";
 
-return(
+function Navbar() {
 
-<motion.nav
+  const { cart, clearCart } = useContext(CartContext);
 
-initial={{y:-100}}
+  const { user, setUser } = useAuth();
 
-animate={{y:0}}
+  const navigate = useNavigate();
 
-transition={{duration:.8}}
+  const handleLogout = () => {
 
-className="navbar"
+    logout();
 
->
+    setUser(null);
 
-<div className="logo">
+    navigate("/login");
 
-🌿 GreenRoyale
+    clearCart();
+    localStorage.removeItem("cart");
 
-</div>
+  };
 
-<ul>
+  return (
 
-<li>
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: .8 }}
+      className="navbar"
+    >
 
-<Link to="/">Home</Link>
+      <div className="logo">
 
-</li>
+        🌿 GreenRoyale
 
-<li>
+      </div>
 
-<Link to="/menu">
+      <ul>
 
-Menu
+        <li>
 
-</Link>
+          <Link to="/">Home</Link>
 
-</li>
+        </li>
 
-<li>
+        <li>
 
-<Link to="/cart">
+          <Link to="/menu">Menu</Link>
 
-<FaShoppingCart/>
+        </li>
 
-<span>
+        <li>
 
-({cart.reduce((a,b)=>a+b.quantity,0)})
+  {!user?.isAdmin && (
+    <Link to="/orders">My Orders</Link>
+  )}
 
-</span>
+  {user?.isAdmin && (
+    <Link to="/admin">Admin</Link>
+  )}
+        </li>
 
-</Link>
+        <li>
+          <Link to="/favourites">Favourites</Link>
+        </li>
 
-</li>
+        <li>
 
-</ul>
+          <Link to="/cart">
 
-</motion.nav>
+            <FaShoppingCart />
 
-)
+            <span>
+
+              ({cart.reduce((a, b) => a + b.quantity, 0)})
+
+            </span>
+
+          </Link>
+
+        </li>
+
+        {user ? (
+
+          <>
+
+            <li>
+
+              <span className="username">
+
+                👤 {user.name}
+
+              </span>
+
+            </li>
+
+            <li>
+
+              <button
+                className="logout-btn"
+                onClick={handleLogout}
+              >
+
+                Logout
+
+              </button>
+
+            </li>
+
+          </>
+
+        ) : (
+
+          <>
+
+            <li>
+
+              <Link to="/login">
+
+                Login
+
+              </Link>
+
+            </li>
+
+            <li>
+
+              <Link to="/register">
+
+                Register
+
+              </Link>
+
+            </li>
+
+          </>
+
+        )}
+
+      </ul>
+
+    </motion.nav>
+
+  );
 
 }
 
