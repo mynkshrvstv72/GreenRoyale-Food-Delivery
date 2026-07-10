@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getFavourites } from "../services/favouriteService";
-import FoodCard from "../components/FoodCard/FoodCard";
+import FoodCard from "../components/FoodCard/foodCard";
 import "./Favourite.css";
 
 import { removeFavourite } from "../services/favouriteService";
