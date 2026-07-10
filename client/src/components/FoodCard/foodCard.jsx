@@ -1,4 +1,4 @@
-import "./FoodCard.css";
+import "./foodCard.css";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { FaShoppingCart, FaStar, FaHeart } from "react-icons/fa";
