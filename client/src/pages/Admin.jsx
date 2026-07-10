@@ -4,6 +4,8 @@ import { addFood, deleteFood, updateFood } from "../services/adminService";
 import "./Admin.css";
 import { toast } from "react-toastify";
 
+import API_URL from "../services/api";
+
 function Admin() {
 
     const [editingId, setEditingId] = useState(null);
@@ -16,7 +18,7 @@ function Admin() {
 
     try{
 
-        const res = await axios.get("http://localhost:5001/api/foods");
+        const res = await axios.get(`${API_URL}/api/foods`);
 
         setFoods(res.data);
 

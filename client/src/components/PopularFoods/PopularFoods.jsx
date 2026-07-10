@@ -6,6 +6,8 @@ import axios from "axios";
 
 import FoodCard from "../FoodCard/foodCard";
 
+import API_URL from "../../services/api";
+
 function PopularFoods({
 search,
 category
@@ -17,7 +19,7 @@ useEffect(()=>{
 
 axios
 
-.get("http://localhost:5001/api/foods")
+.get(`${API_URL}/api/foods`)
 
 .then((res)=>setFoods(res.data))
 

@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API = "http://localhost:5001/api/favourites";
+import API_URL from "./api";
+
+const API = `${API_URL}/api/favourites`;
 
 const getToken = () => {
   const user = JSON.parse(localStorage.getItem("user"));

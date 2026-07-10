@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API = "http://localhost:5001/api/orders";
+import API_URL from "./api";
+
+const API = `${API_URL}/api/orders`;
 
 const getToken = () => {
 

@@ -5,6 +5,8 @@ import FoodCard from "../components/FoodCard/foodCard";
 
 import "./Menu.css";
 
+import API_URL from "../services/api";
+
 function Menu() {
 
   const [foods, setFoods] = useState([]);
@@ -18,7 +20,7 @@ function Menu() {
 
     axios
 
-      .get("http://localhost:5001/api/foods")
+      .get(`${API_URL}/api/foods`)
 
       .then((res) => {
 

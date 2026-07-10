@@ -1,10 +1,12 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5001/api/auth";
+import API_URL from "./api";
+
+const API_URL_AUTH = `${API_URL}/api/auth`;
 
 export const register = async (userData) => {
 
-  const response = await axios.post(`${API_URL}/register`, userData);
+  const response = await axios.post(`${API_URL_AUTH}/register`, userData);
 
   if (response.data) {
 
@@ -18,7 +20,7 @@ export const register = async (userData) => {
 
 export const login = async (userData) => {
 
-  const response = await axios.post(`${API_URL}/login`, userData);
+  const response = await axios.post(`${API_URL_AUTH}/login`, userData);
 
   if (response.data) {
 
