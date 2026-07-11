@@ -203,7 +203,7 @@ JWT_SECRET=your_jwt_secret
 ## 🌐 Live Demo
 
 Frontend:
-https://green-royale-food-delivery-dm7er8in1-greenroyale.vercel.app/
+https://green-royale-food-delivery.vercel.app/
 
 Backend API:
 https://greenroyale-backend.onrender.com
