@@ -200,6 +200,16 @@ JWT_SECRET=your_jwt_secret
 
 ---
 
+## 🌐 Live Demo
+
+Frontend:
+https://green-royale-food-delivery-dm7er8in1-greenroyale.vercel.app/
+
+Backend API:
+https://greenroyale-backend.onrender.com
+
+___
+
 # 🎯 Future Enhancements
 
 - Online Payment Gateway Integration
